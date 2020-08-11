@@ -81,20 +81,22 @@ function draw(){
 }
 
 function mouseDragged(){
-    if (gameState!=="launched"){
+    //if (gameState!=="launched"){
         Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
-    }
+    //}
 }
 
 
 function mouseReleased(){
     slingshot.fly();
-    gameState = "launched";
+    //gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-       // slingshot.attach(bird.body);
+        bird.trajectory=[];
+        Matter.Body.setPosition(bird.body,{x:200,y:50});
+        slingshot.attach(bird.body);
     }
 }
 
@@ -115,3 +117,15 @@ async function getBackgroundImg(){
     backgroundImg = loadImage(bg);
     console.log(backgroundImg);
 }
+
+/*
+Types of errors:
+1. Typos
+2. Incorrect use of function
+3. Variables out of scope
+
+Techniques to identify a problem:
+1. Comment each section of the code
+2. Print the values of the variables which we think are causing the problem: console.log()
+3. Print messages as well using console.log()
+*/
